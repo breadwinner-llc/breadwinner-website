@@ -13,22 +13,20 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
+        path: '',
+        component: PostComponent
+      },
+      {
+        path: 'platform-select',
+        component: PlatformSelectComponent
+      },
+      {
         path: 'accounts-add',
         component: AccountsAddComponent
       },
       {
         path: 'accounts-edit',
         component: AccountsEditComponent
-      },
-      {
-        path: 'post',
-        component: PostComponent,
-        children: [
-          {
-            path: 'platform-select',
-            component: PlatformSelectComponent
-          }
-        ]
       }
     ]
   }

@@ -22,7 +22,7 @@ import { AccountsEditComponent } from './accounts/accounts-edit/accounts-edit.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
