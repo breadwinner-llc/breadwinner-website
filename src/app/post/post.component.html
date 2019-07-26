@@ -1,1 +1,51 @@
-<p>post works!</p>
+<div>
+  <form [formGroup]="postForm" (ngSubmit)="submitPostForm()" >
+    <div>
+      <div class="form-group">
+        <label for="productTitle">Product Title</label>
+        <input id="productTitle" formControlName="productTitle" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="condition">Condition</label>
+        <input id="condition" formControlName="condition" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="boxCondition">Box Condition</label>
+        <input id="boxCondition" formControlName="boxCondition" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Size</label>
+        <select ngModel="" class="form-control" formControlName="size">
+          <option value="">Clothing</option>
+          <option *ngFor="let clothingSize of clothingSizes" [value]="clothingSize">{{clothingSize}}</option>
+        </select>
+        <select ngModel="" class="form-control" formControlName="size">
+          <option value="">Shoes</option>
+          <option *ngFor="let shoeSize of shoesSizes" [value]="shoeSize">{{shoeSize}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="photos">Insert Photos of Product</label>
+        <input id="photos" formControlName="photos" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="amountEarned">How Much Would You Like To Earn From Your Sale?</label>
+        <input id="amountEarned" formControlName="amountEarned" class="form-control">
+      </div>
+      <label for="details">Input Package Details</label>
+      <div id="details" class="form-group">
+        <label for="lb">Lb.</label>
+        <input id="lb" formControlName="lb" class="form-control">
+        <label for="oz">Oz.</label>
+        <input id="oz" formControlName="oz" class="form-control">
+        <label for="l">L(in.)</label>
+        <input id="l" formControlName="length" class="form-control">
+        <label for="w">W(in.)</label>
+        <input id="w" formControlName="width" class="form-control">
+        <label for="h">H(in.)</label>
+        <input id="h" formControlName="height" class="form-control">
+
+      </div>
+    </div>
+  </form>
+</div>

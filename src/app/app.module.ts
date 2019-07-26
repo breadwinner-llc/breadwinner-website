@@ -9,6 +9,7 @@ import { PostComponent } from './post/post.component';
 import { PlatformSelectComponent } from './post/platform-select/platform-select.component';
 import { AccountsAddComponent } from './accounts/accounts-add/accounts-add.component';
 import { AccountsEditComponent } from './accounts/accounts-edit/accounts-edit.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AccountsEditComponent } from './accounts/accounts-edit/accounts-edit.co
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
