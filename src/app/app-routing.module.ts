@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent} from "./home/home.component";
-import {AccountsEditComponent} from "./accounts/accounts-edit/accounts-edit.component";
-import {AccountsAddComponent} from "./accounts/accounts-add/accounts-add.component";
-import {PostComponent} from "./post/post.component";
-import {PlatformSelectComponent} from "./post/platform-select/platform-select.component";
+import {HomeComponent} from './home/home.component';
+import {AccountsEditComponent} from './accounts/accounts-edit/accounts-edit.component';
+import {AccountsAddComponent} from './accounts/accounts-add/accounts-add.component';
+import {PostComponent} from './post/post.component';
+import {PlatformSelectComponent} from './post/platform-select/platform-select.component';
+import {AccountsComponent} from './accounts/accounts.component';
+import {LoginComponent} from './login/login.component';
 
 
 const routes: Routes = [
   {
     path: '',
+    component: LoginComponent
+  },
+  {
+    path: ':userId',
     component: HomeComponent,
     children: [
       {
@@ -21,14 +27,20 @@ const routes: Routes = [
         component: PlatformSelectComponent
       },
       {
-        path: 'accounts-add',
-        component: AccountsAddComponent
+        path: 'accounts',
+        component: AccountsComponent,
+        children: [
+          {
+            path: 'add',
+            component: AccountsAddComponent
+          },
+          {
+            path: ':accountId/edit',
+            component: AccountsEditComponent
+          }
+          ],
       },
-      {
-        path: 'accounts-edit',
-        component: AccountsEditComponent
-      }
-    ]
+    ],
   }
 ];
 
