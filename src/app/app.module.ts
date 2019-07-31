@@ -11,6 +11,7 @@ import { AccountsAddComponent } from './accounts/accounts-add/accounts-add.compo
 import { AccountsEditComponent } from './accounts/accounts-edit/accounts-edit.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import { AccountsComponent } from './accounts/accounts.component';
+import {UserService} from './user.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { AccountsComponent } from './accounts/accounts.component';
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

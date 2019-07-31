@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AccountInterface} from '../interfaces/account.interface';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-accounts',
@@ -8,17 +9,18 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./accounts.component.scss']
 })
 export class AccountsComponent implements OnInit {
-  accountsArray: AccountInterface[] = [{id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero'}];
+  accountsArray: AccountInterface[] = [{id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero'},{id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero'}];
   userId;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
-    this.route.params.subscribe( (data) => {
-      this.userId = data.userId;
-    });
+    this.userId = this.userService.userId;
   }
   onEdit(accountId: number) {
     this.router.navigate([`${this.userId}/accounts/${accountId}/edit`]);
+  }
+  addAccount() {
+    this.router.navigate([`${this.userId}/accounts/add`]);
   }
 
 }

@@ -23,24 +23,23 @@ const routes: Routes = [
         component: PostComponent
       },
       {
-        path: 'platform-select',
-        component: PlatformSelectComponent
-      },
-      {
         path: 'accounts',
-        component: AccountsComponent,
         children: [
+          {
+            path: '',
+            component: AccountsComponent
+          },
           {
             path: 'add',
             component: AccountsAddComponent
           },
           {
-            path: ':accountId/edit',
+            path: ':accountsId/edit',
             component: AccountsEditComponent
           }
-          ],
-      },
-    ],
+        ]
+      }
+    ]
   }
 ];
 

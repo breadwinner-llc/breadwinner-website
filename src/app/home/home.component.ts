@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -7,16 +8,16 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  userId = 1;
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  userId;
+  sub;
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    // this.route.params.subscribe((data) => {
-    //   this.userId = data.userId;
-    // });
+    this.userId = this.userService.userId;
+    console.log(this.userId);
   }
   toAccounts() {
-    this.router.navigate([`${1}/accounts`]);
+    this.router.navigate([`${this.userId}/accounts`]);
   }
 
 }
