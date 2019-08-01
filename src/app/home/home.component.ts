@@ -9,7 +9,6 @@ import {UserService} from '../user.service';
 })
 export class HomeComponent implements OnInit {
   userId;
-  sub;
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   ngOnInit() {

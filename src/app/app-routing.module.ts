@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {AccountsEditComponent} from './accounts/accounts-edit/accounts-edit.component';
-import {AccountsAddComponent} from './accounts/accounts-add/accounts-add.component';
 import {PostComponent} from './post/post.component';
 import {PlatformSelectComponent} from './post/platform-select/platform-select.component';
 import {AccountsComponent} from './accounts/accounts.component';
 import {LoginComponent} from './login/login.component';
+import {AccountFormComponent} from './accounts/account-form/account-form.component';
 
 
 const routes: Routes = [
@@ -20,7 +19,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: PostComponent
+        component: PostComponent,
+        children: [
+          {
+            path: '',
+            component: PlatformSelectComponent
+          }
+        ]
       },
       {
         path: 'accounts',
@@ -31,11 +36,11 @@ const routes: Routes = [
           },
           {
             path: 'add',
-            component: AccountsAddComponent
+            component: AccountFormComponent
           },
           {
             path: ':accountsId/edit',
-            component: AccountsEditComponent
+            component: AccountFormComponent
           }
         ]
       }
