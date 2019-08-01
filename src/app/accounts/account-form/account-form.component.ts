@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AccountInterface} from '../../interfaces/account.interface';
+import {platform} from 'os';
 
 @Component({
   selector: 'app-account-form',
@@ -15,6 +16,8 @@ export class AccountFormComponent implements OnInit {
   accountForm;
   account  = {} as AccountInterface;
   show = true;
+  platform;
+  isLoaded = false;
   constructor(private route: ActivatedRoute, private location: Location ) { }
 
   ngOnInit() {
@@ -25,14 +28,15 @@ export class AccountFormComponent implements OnInit {
     if (this.accountId != null) {
       this.isEdit = true;
       this.account = {id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero'};
+      this.platform = this.account.name;
     }
     this.initAccountForm();
   }
   initAccountForm() {
     this.accountForm = new FormGroup( {
-      name: new FormControl(this.account.name),
-      userName: new FormControl(this.account.userName),
-      password: new FormControl(this.account.password)
+      name: new FormControl(this.account.name, [Validators.required]),
+      userName: new FormControl(this.account.userName, [Validators.required]),
+      word: new FormControl(this.account.password, [Validators.required])
     });
     this.disableSelect();
   }
@@ -40,9 +44,22 @@ export class AccountFormComponent implements OnInit {
     if (this.isEdit) {
       this.accountForm.controls.name.disable();
     }
+    this.isLoaded = true;
   }
   onSave() {
-    console.log('Saved!');
+    if (this.accountForm.valid) {
+      if (this.isEdit) {
+        this.account.name = this.platform;
+        this.account.userName = this.accountForm.value.userName;
+        this.account.password = this.accountForm.value.word;
+        console.log(this.account);
+      } else {
+        this.account.name = this.accountForm.value.name;
+        this.account.userName = this.accountForm.value.userName;
+        this.account.password = this.accountForm.value.word;
+        console.log(this.account);
+      }
+    }
   }
   onCancel() {
     this.location.back();
