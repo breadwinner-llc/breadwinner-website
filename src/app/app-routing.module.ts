@@ -18,11 +18,11 @@ const routes: Routes = [
     component: HomeComponent,
     children: [
       {
-        path: '',
+        path: 'post',
         component: PostComponent,
         children: [
           {
-            path: '',
+            path: 'platforms',
             component: PlatformSelectComponent
           }
         ]

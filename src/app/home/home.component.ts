@@ -18,5 +18,11 @@ export class HomeComponent implements OnInit {
   toAccounts() {
     this.router.navigate([`${this.userId}/accounts`]);
   }
+  toPost() {
+    this.router.navigate([`${this.userId}/post`]);
+  }
+  signOut() {
+    this.router.navigate( [``]);
+  }
 
 }

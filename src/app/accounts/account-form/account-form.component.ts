@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AccountInterface} from '../../interfaces/account.interface';
-import {platform} from 'os';
 
 @Component({
   selector: 'app-account-form',

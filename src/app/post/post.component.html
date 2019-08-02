@@ -1,32 +1,37 @@
-<div>
+<div class="container">
   <form [formGroup]="postForm" (ngSubmit)="submitPostForm()" >
     <div>
+      <label>Input Product Details</label>
       <div class="form-group">
-        <label for="productTitle">Product Title</label>
-        <input id="productTitle" formControlName="productTitle" class="form-control">
+        <input id="productTitle" placeholder="Product Title" formControlName="productTitle" class="form-control">
       </div>
       <div class="form-group">
-        <label for="condition">Condition</label>
-        <input id="condition" formControlName="condition" class="form-control">
+        <select class="form-control" formControlName="condition">
+          <option value="" selected hidden>Select Item Condition</option>
+          <option value="new">New</option>
+          <option value="used">Used</option>
+        </select>
       </div>
       <div class="form-group">
-        <label for="boxCondition">Box Condition</label>
-        <input id="boxCondition" formControlName="boxCondition" class="form-control">
+        <select class="form-control" formControlName="boxCondition">
+          <option value="" selected hidden>Select Box Condition</option>
+          <option *ngFor="let condition of boxConditions" [value]="condition">{{condition}}</option>
+        </select>
       </div>
       <div class="form-group col-md-6">
-        <label>Size</label>
-        <select ngModel="" class="form-control" formControlName="size">
-          <option value="">Clothing</option>
+        <select class="form-control" formControlName="size">
+          <option value="">Size-Clothing</option>
           <option *ngFor="let clothingSize of clothingSizes" [value]="clothingSize">{{clothingSize}}</option>
         </select>
-        <select ngModel="" class="form-control" formControlName="size">
-          <option value="">Shoes</option>
+        <select class="form-control" formControlName="size">
+          <option value="">Size-Shoes</option>
           <option *ngFor="let shoeSize of shoesSizes" [value]="shoeSize">{{shoeSize}}</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="photos">Insert Photos of Product</label>
-        <input id="photos" formControlName="photos" class="form-control">
+        <span style="color:red;" *ngIf="message">{{message}}</span>
+        <input #file type="file" accept='image/*' (change)="preview(file.files)" formControlName="photos" class="form-control">
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
       </div>
       <div class="form-group">
         <label for="amountEarned">How Much Would You Like To Earn From Your Sale?</label>
@@ -34,16 +39,11 @@
       </div>
       <label for="details">Input Package Details</label>
       <div id="details" class="form-group">
-        <label for="lb">Lb.</label>
-        <input id="lb" formControlName="lb" class="form-control">
-        <label for="oz">Oz.</label>
-        <input id="oz" formControlName="oz" class="form-control">
-        <label for="l">L(in.)</label>
-        <input id="l" formControlName="length" class="form-control">
-        <label for="w">W(in.)</label>
-        <input id="w" formControlName="width" class="form-control">
-        <label for="h">H(in.)</label>
-        <input id="h" formControlName="height" class="form-control">
+        <input id="lb" placeholder="Lb." formControlName="lb" class="form-control">
+        <input id="oz" placeholder="Oz." formControlName="oz" class="form-control">
+        <input id="l"placeholder="L(in.)" formControlName="length" class="form-control">
+        <input id="w" placeholder="W(in.)" formControlName="width" class="form-control">
+        <input id="h" placeholder="H(in.)" formControlName="height" class="form-control">
 
       </div>
     </div>

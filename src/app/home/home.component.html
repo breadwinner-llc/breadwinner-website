@@ -1,14 +1,17 @@
-<div class ="container">
-  <nav class="navbar navbar-default ">
-    <div class="container-fluid">
-      <div class="navbar-default">
-        <b>Breadwinner</b>
-      </div>
+<nav class="navbar mavbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" class="title" (click)="toAccounts()">Breadwinner</a>
     </div>
-    <div class="navbar-right">
-     <button class="btn btn-primary" (click)="toAccounts()">Accounts</button>
+    <div class="navbar-default">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a class="bold spacer" (click)="toAccounts()">Accounts</a></li>
+        <li routerLinkActive="active"><a class="bold" (click)="toPost()">Create New Listing</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a class="bold" routerLink="">Signout</a> </li>
+      </ul>
     </div>
-  </nav>
-  <router-outlet></router-outlet>
-</div>
-
+  </div>
+</nav>
+<router-outlet></router-outlet>

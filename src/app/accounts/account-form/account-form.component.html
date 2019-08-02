@@ -1,19 +1,19 @@
 <div class="center col-md-4" [formGroup]="accountForm" *ngIf="isLoaded">
-  <h2 *ngIf="!isEdit">Add New Contact</h2>
-  <h2 *ngIf="isEdit">Edit Contact</h2>
+  <h1 *ngIf="!isEdit">Add New Contact</h1>
+  <h1  *ngIf="isEdit">Edit Contact</h1>
   <div class="form-group">
-    <select formControlName="name" class="form-control select bold">
+    <select formControlName="name" required class="form-control select bold">
       <option [value]="null" selected hidden>Platform</option>
       <option value="Ebay">Ebay</option>
     </select>
   </div>
   <div class="form-group">
-    <input placeholder="User Name" formControlName="userName" class="form-control pad bold">
+    <input placeholder="User Name" required formControlName="userName" class="form-control pad bold">
   </div>
   <div class="form-group">
-    <input placeholder="Password" [type]="show ? 'password':'text'" formControlName="word" class="form-control pad bold">
+    <input placeholder="Password" required [type]="show ? 'password':'text'" formControlName="word" class="form-control pad bold">
     <div type="button" class="show" (click)="show = !show">show password</div>
   </div>
   <button type="button" class="btn btn-primary cancel" (click)="onCancel()">Cancel</button>&nbsp;
-  <button type="submit" class="btn btn-primary save" (click)="onSave()">Save</button>
+  <button type="submit" class="btn btn-primary save" [disabled]="!accountForm.valid" (click)="onSave()">Save</button>
 </div>

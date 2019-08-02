@@ -13,6 +13,7 @@
   padding-right: 53px;
   padding-top: 10px;
   padding-bottom:  10px;
+  width: 271px;
 }
 
 .save {
@@ -21,6 +22,7 @@
   padding-right: 62px;
   padding-top: 10px;
   padding-bottom:  10px;
+  width: 271px;
 }
 
 .select {
@@ -32,5 +34,13 @@
 }
 
 .show {
-  margin-left: 253px;
+  margin-left: 453px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+select.ng-invalid.ng-touched {
+  border: 1px solid red;
 }

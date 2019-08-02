@@ -1,0 +1,33 @@
+.center {
+  margin-top: 100px;
+  margin-left: 39%;
+}
+
+.pad {
+  padding: 20px;
+  width: 367px;
+}
+
+.buttons {
+  font-size: 20px;
+  padding-left: 55px;
+  padding-right: 55px;
+  padding-top: 10px;
+  padding-bottom:  10px;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.show {
+  margin-left: 270px;
+}
+
+.title {
+  margin-left: 12px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

@@ -14,6 +14,10 @@ export class PostComponent implements OnInit {
   post: PostInterface;
   clothingSizes = ['XS', 'S', 'M', 'L', 'XL'];
   shoesSizes = this.setShoeSizes();
+  boxConditions = ['Good Condition', 'Damaged Box', 'No Original Box', 'Missing Lid'];
+  public imagePath;
+  imgURL: any;
+  public message: string;
 
   constructor() { }
 
@@ -23,17 +27,17 @@ export class PostComponent implements OnInit {
 
   initPostForm() {
     this.postForm = new FormGroup( {
-      productTitle: new FormControl(null, [Validators.required]),
-      condition: new FormControl(null, [Validators.required]),
-      boxCondition: new FormControl(null, [Validators.required]),
-      size: new FormControl(null, [Validators.required]),
-      photos: new FormControl(null, [Validators.required]),
-      amountEarned: new FormControl(null, [Validators.required]),
-      lb: new FormControl(null, [Validators.required]),
-      oz: new FormControl(null, [Validators.required]),
-      length: new FormControl(null, [Validators.required]),
-      width: new FormControl(null, [Validators.required]),
-      height: new FormControl(null, [Validators.required])
+      productTitle: new FormControl('', [Validators.required]),
+      condition: new FormControl('', [Validators.required]),
+      boxCondition: new FormControl('', [Validators.required]),
+      size: new FormControl('', [Validators.required]),
+      photos: new FormControl('', [Validators.required]),
+      amountEarned: new FormControl('', [Validators.required]),
+      lb: new FormControl('', [Validators.required]),
+      oz: new FormControl('', [Validators.required]),
+      length: new FormControl('', [Validators.required]),
+      width: new FormControl('', [Validators.required]),
+      height: new FormControl('', [Validators.required])
     });
   }
 
@@ -43,6 +47,25 @@ export class PostComponent implements OnInit {
       sizes.push(x.toString());
     }
     return sizes;
+  }
+
+  preview(files) {
+    if (files.length === 0) {
+      return;
+    }
+
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = 'Only images are supported.';
+      return;
+    }
+
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (event) => {
+      this.imgURL = reader.result;
+    };
   }
 
   submitPostForm() {
