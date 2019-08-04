@@ -19,8 +19,11 @@ const routes: Routes = [
     children: [
       {
         path: 'post',
-        component: PostComponent,
         children: [
+          {
+            path: '',
+            component: PostComponent,
+          },
           {
             path: 'platforms',
             component: PlatformSelectComponent

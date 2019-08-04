@@ -9,13 +9,13 @@ import {UserService} from '../user.service';
   styleUrls: ['./accounts.component.scss']
 })
 export class AccountsComponent implements OnInit {
-  accountsArray: AccountInterface[] = [{id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero'},
-    {id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero'}];
+  accountsArray: AccountInterface[];
   userId;
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit() {
     this.userId = this.userService.userId;
+    this.accountsArray = this.userService.userAccounts;
   }
   onEdit(accountId: number) {
     this.router.navigate([`${this.userId}/accounts/${accountId}/edit`]);

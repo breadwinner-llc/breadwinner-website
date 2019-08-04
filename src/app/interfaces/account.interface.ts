@@ -3,4 +3,6 @@ export class AccountInterface {
   name?: string;
   userName?: string;
   password?: string;
+  amountEarned?: number;
+  selected?: boolean;
 }

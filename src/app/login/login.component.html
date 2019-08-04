@@ -1,5 +1,6 @@
 <div class="center col-md-4" [formGroup]="loginForm">
-  <h2 class="title">Welcome To Breadwinner</h2>
+  <h1 class="title">Breadwinner</h1>
+  <p class="desc col-md-8" >List your products widely and quickly to ensure a fast sale. The more sales, the sooner you are to becoming the Breadwinner!</p>
   <div class="form-group">
     <input placeholder="User Name" formControlName="userName" class="form-control pad bold">
   </div>
@@ -9,4 +10,5 @@
   </div>
   <button type="button" class="btn btn-primary buttons" [disabled]="!loginForm.valid" (click)="signIn()">Sign In</button>&nbsp;
   <button type="submit" class="btn btn-primary buttons" [disabled]="!loginForm.valid" (click)="signUp()">Sign Up</button>
+  <p class="terms col-md-8" >By signing up or logging in, you agree to our Terms & Conditions, and Privacy Policy</p>
 </div>

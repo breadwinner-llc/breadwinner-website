@@ -1,1 +1,24 @@
-<p>platform-select works!</p>
+<div class="move container">
+  <div class="col-md-4">
+    <h3 class="center gap">Select the platforms you would like to post your product to.</h3>
+    <div class="row">
+      <div class="col-md-2 platform">
+        <label>Platform</label>
+      </div>
+      <div class="info col-md-8">
+        <label class="center">Price inorder to earn desired amount after fees</label>
+      </div>
+    </div>
+    <div class="row outline p-0" *ngFor="let account of userAccounts">
+      <div class="col-md-5 spacer"><b>{{account.name}}</b></div>
+      <div class="col-md-4 spacer"><b>{{account.amountEarned | currency}}</b></div>
+      <div class="col-md-3 rightMost">
+        <label class="switch">
+          <input type="checkbox"  [checked]="account.selected" (change)="select(account)">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+    <button class="btn btn-primary post" (click)="post()">Post Product</button>
+  </div>
+</div>

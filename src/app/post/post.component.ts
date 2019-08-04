@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {PostInterface} from '../interfaces/post.interface';
+import {Post} from '../interfaces/post.interface';
+import {Router} from '@angular/router';
+import {UserService} from '../user.service';
+
 
 @Component({
   selector: 'app-post',
@@ -11,15 +14,15 @@ import {PostInterface} from '../interfaces/post.interface';
 export class PostComponent implements OnInit {
 
   postForm;
-  post: PostInterface;
+  post = {} as Post;
   clothingSizes = ['XS', 'S', 'M', 'L', 'XL'];
   shoesSizes = this.setShoeSizes();
   boxConditions = ['Good Condition', 'Damaged Box', 'No Original Box', 'Missing Lid'];
   public imagePath;
-  imgURL: any;
+  imgURLS: any = [];
   public message: string;
 
-  constructor() { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     this.initPostForm();
@@ -30,7 +33,8 @@ export class PostComponent implements OnInit {
       productTitle: new FormControl('', [Validators.required]),
       condition: new FormControl('', [Validators.required]),
       boxCondition: new FormControl('', [Validators.required]),
-      size: new FormControl('', [Validators.required]),
+      clothingSize: new FormControl('', [Validators.required]),
+      shoeSize: new FormControl('', [Validators.required]),
       photos: new FormControl('', [Validators.required]),
       amountEarned: new FormControl('', [Validators.required]),
       lb: new FormControl('', [Validators.required]),
@@ -43,7 +47,7 @@ export class PostComponent implements OnInit {
 
   setShoeSizes() {
     const sizes = [];
-    for ( let x = 0; x <= 16; x++){
+    for ( let x = 1; x <= 16; x = x + .5) {
       sizes.push(x.toString());
     }
     return sizes;
@@ -64,12 +68,27 @@ export class PostComponent implements OnInit {
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
     reader.onload = (event) => {
-      this.imgURL = reader.result;
+      this.imgURLS.push(reader.result);
     };
   }
 
   submitPostForm() {
-
+    if (this.postForm.valid) {
+      this.post.productTitle = this.postForm.value.productTitle;
+      this.post.condition = this.postForm.value.condition;
+      this.post.boxCondition = this.postForm.value.boxCondition;
+      this.post.clothingSize = this.postForm.value.clothingSize;
+      this.post.shoeSize = this.postForm.value.shoeSize;
+      this.post.photos = this.imgURLS;
+      this.post.amountEarned = this.postForm.value.amountEarned;
+      this.post.lb = this.postForm.value.lb;
+      this.post.oz = this.postForm.value.oz;
+      this.post.length = this.postForm.value.length;
+      this.post.width = this.postForm.value.width;
+      this.post.height = this.postForm.value.height;
+      this.userService.post = this.post;
+      this.router.navigate([`${this.userService.userId}/post/platforms`]);
+    }
   }
 
 }

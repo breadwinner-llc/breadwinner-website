@@ -1,51 +1,73 @@
 <div class="container">
   <form [formGroup]="postForm" (ngSubmit)="submitPostForm()" >
-    <div>
-      <label>Input Product Details</label>
+    <div class="col-md-6 center">
+      <h3 class="bold">Input Product Details</h3>
       <div class="form-group">
-        <input id="productTitle" placeholder="Product Title" formControlName="productTitle" class="form-control">
+        <input type="text" id="productTitle" placeholder="Product Title" formControlName="productTitle" class="form-control">
       </div>
-      <div class="form-group">
-        <select class="form-control" formControlName="condition">
-          <option value="" selected hidden>Select Item Condition</option>
-          <option value="new">New</option>
-          <option value="used">Used</option>
-        </select>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <select class="form-control" formControlName="condition">
+            <option value="" selected hidden>Select Item Condition</option>
+            <option value="new">New</option>
+            <option value="used">Used</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <select class="form-control" formControlName="boxCondition">
+            <option value="" selected hidden>Select Box Condition</option>
+            <option *ngFor="let condition of boxConditions" [value]="condition">{{condition}}</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group">
-        <select class="form-control" formControlName="boxCondition">
-          <option value="" selected hidden>Select Box Condition</option>
-          <option *ngFor="let condition of boxConditions" [value]="condition">{{condition}}</option>
-        </select>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <select class="form-control" formControlName="clothingSize">
+            <option value="" selected hidden>Select Size if Clothing</option>
+            <option *ngFor="let clothingSize of clothingSizes" [value]="clothingSize">{{clothingSize}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <select class="form-control" formControlName="shoeSize">
+            <option value="" selected hidden>Select Size if Shoes</option>
+            <option *ngFor="let shoeSize of shoesSizes" [value]="shoeSize">{{shoeSize}}</option>
+          </select>
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <select class="form-control" formControlName="size">
-          <option value="">Size-Clothing</option>
-          <option *ngFor="let clothingSize of clothingSizes" [value]="clothingSize">{{clothingSize}}</option>
-        </select>
-        <select class="form-control" formControlName="size">
-          <option value="">Size-Shoes</option>
-          <option *ngFor="let shoeSize of shoesSizes" [value]="shoeSize">{{shoeSize}}</option>
-        </select>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Insert Photos of Product. Can Select Multiple Images.</label>
+          <span style="color:red;" *ngIf="message">{{message}}</span>
+          <input #file type="file" accept='image/*' (change)="preview(file.files)" formControlName="photos" class="form-control">
+          <br>
+          <img *ngFor="let url of imgURLS" [src]="url" height="100">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="amountEarned">How Much Would You Like To Earn From Your Sale?</label>
+          <input type="number" id="amountEarned" placeholder="0.00" formControlName="amountEarned" class="form-control">
+        </div>
       </div>
-      <div class="form-group">
-        <span style="color:red;" *ngIf="message">{{message}}</span>
-        <input #file type="file" accept='image/*' (change)="preview(file.files)" formControlName="photos" class="form-control">
-        <img [src]="imgURL" height="200" *ngIf="imgURL">
+      <h3 class="bold">Input Package Details</h3>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <input type="number" id="lb" placeholder="Lb." formControlName="lb" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+          <input type="number" id="oz" placeholder="Oz." formControlName="oz" class="form-control">
+        </div>
       </div>
-      <div class="form-group">
-        <label for="amountEarned">How Much Would You Like To Earn From Your Sale?</label>
-        <input id="amountEarned" formControlName="amountEarned" class="form-control">
+      <div class="row">
+        <div class="form-group col-md-4">
+          <input type="number" id="l"placeholder="L(in.)" formControlName="length" class="form-control">
+        </div>
+        <div class="form-group col-md-4">
+          <input type="number" id="w" placeholder="W(in.)" formControlName="width" class="form-control">
+        </div>
+        <div class="form-group col-md-4">
+          <input type="number" id="h" placeholder="H(in.)" formControlName="height" class="form-control">
+        </div>
       </div>
-      <label for="details">Input Package Details</label>
-      <div id="details" class="form-group">
-        <input id="lb" placeholder="Lb." formControlName="lb" class="form-control">
-        <input id="oz" placeholder="Oz." formControlName="oz" class="form-control">
-        <input id="l"placeholder="L(in.)" formControlName="length" class="form-control">
-        <input id="w" placeholder="W(in.)" formControlName="width" class="form-control">
-        <input id="h" placeholder="H(in.)" formControlName="height" class="form-control">
-
-      </div>
+      <button type="submit "class="btn btn-primary continue" [disabled]="!postForm.valid" >Continue To Platform Selection</button>
     </div>
   </form>
 </div>

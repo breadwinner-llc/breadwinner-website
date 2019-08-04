@@ -25,9 +25,26 @@
 }
 
 .title {
-  margin-left: 12px;
+  margin-left: 70px !important;
+  margin-bottom: 20px !important;
+  font-weight: bolder;
 }
 
 input.ng-invalid.ng-touched {
   border: 1px solid red;
+}
+
+.desc {
+  text-align: center;
+  margin-bottom: 30px !important;
+  font-weight: bold;
+  font-size: small;
+}
+
+.terms {
+  text-align: center;
+  margin-top: 30px !important;
+  font-weight: bold;
+  font-size: smaller;
+  color: gray;
 }

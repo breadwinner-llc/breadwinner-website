@@ -1,9 +1,10 @@
-export interface PostInterface {
+export interface Post {
 
   productTitle?: string;
   condition?: string;
   boxCondition?: string;
-  size?: any;
+  clothingSize?: string;
+  shoeSize?: string;
   photos?: any;
   amountEarned?: number;
   lb?: number;
