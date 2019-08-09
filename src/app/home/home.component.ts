@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../user.service';
+import {FirebaseApp} from '@angular/fire';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +10,15 @@ import {UserService} from '../user.service';
 })
 export class HomeComponent implements OnInit {
   userId;
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, private mfAuth: FirebaseApp) { }
 
   ngOnInit() {
-    this.userId = this.userService.userId;
-    console.log(this.userId);
   }
   toAccounts() {
-    this.router.navigate([`${this.userId}/accounts`]);
+    this.router.navigate([`home/accounts`]);
   }
   toPost() {
-    this.router.navigate([`${this.userId}/post`]);
+    this.router.navigate([`home/post`]);
   }
   signOut() {
     this.router.navigate( [``]);

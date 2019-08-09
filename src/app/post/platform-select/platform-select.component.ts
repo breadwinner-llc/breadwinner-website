@@ -34,7 +34,7 @@ export class PlatformSelectComponent implements OnInit {
     if (this.selected) {
       console.log(this.userService.post);
       this.userService.post = {};
-      this.router.navigate([`${this.userService.userId}/post`]);
+      this.router.navigate([`home/post`]);
     }
   }
 

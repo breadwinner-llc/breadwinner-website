@@ -87,7 +87,7 @@ export class PostComponent implements OnInit {
       this.post.width = this.postForm.value.width;
       this.post.height = this.postForm.value.height;
       this.userService.post = this.post;
-      this.router.navigate([`${this.userService.userId}/post/platforms`]);
+      this.router.navigate([`home/post/platforms`]);
     }
   }
 

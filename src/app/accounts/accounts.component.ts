@@ -18,10 +18,10 @@ export class AccountsComponent implements OnInit {
     this.accountsArray = this.userService.userAccounts;
   }
   onEdit(accountId: number) {
-    this.router.navigate([`${this.userId}/accounts/${accountId}/edit`]);
+    this.router.navigate([`home/accounts/${accountId}/edit`]);
   }
   addAccount() {
-    this.router.navigate([`${this.userId}/accounts/add`]);
+    this.router.navigate([`home/accounts/add`]);
   }
   createBlank(input: string) {
     const blank = '';

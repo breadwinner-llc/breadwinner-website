@@ -2,9 +2,13 @@
   <h1 *ngIf="!isEdit">Add New Contact</h1>
   <h1  *ngIf="isEdit">Edit Contact</h1>
   <div class="form-group">
-    <select formControlName="name" required class="form-control select bold">
+    <select *ngIf="!isEdit" formControlName="name" required class="form-control select bold">
       <option [value]="null" selected hidden>Platform</option>
-      <option value="Ebay">Ebay</option>
+      <option  *ngFor="let name of accountNames" [value]="name">{{name}}</option>
+    </select>
+    <select *ngIf="isEdit" formControlName="name" required class="form-control select bold">
+      <option [value]="null" selected hidden>Platform</option>
+      <option  [value]="account.name">{{account.name}}</option>
     </select>
   </div>
   <div class="form-group">

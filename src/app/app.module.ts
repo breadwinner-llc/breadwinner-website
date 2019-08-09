@@ -11,6 +11,10 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { AccountsComponent } from './accounts/accounts.component';
 import {UserService} from './user.service';
 import { AccountFormComponent } from './accounts/account-form/account-form.component';
+import {environment} from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { AccountFormComponent } from './accounts/account-form/account-form.compo
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

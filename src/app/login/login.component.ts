@@ -11,6 +11,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm;
   show = true;
+  errorMessage;
+  successMessage;
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -18,20 +20,35 @@ export class LoginComponent implements OnInit {
   }
   initLoginForm() {
     this.loginForm = new FormGroup( {
-      userName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
       word: new FormControl('', [Validators.required])
     });
   }
   signIn() {
-    this.userService.userId = 1;
-    console.log('Sign In');
-    console.log(this.loginForm.value.userName);
-    console.log(this.loginForm.value.word);
-    this.router.navigate([`${1}/accounts`]);
+    this.tryLogin({email: this.loginForm.value.email, password: this.loginForm.value.word});
   }
   signUp() {
-    this.userService.userId = 1;
-    console.log('Sign Up');
-    this.router.navigate([`${1}/accounts`]);
+    this.tryRegister({email: this.loginForm.value.email, password: this.loginForm.value.word});
+  }
+
+  tryRegister(value) {
+    this.userService.doRegister(value)
+      .then(res => {
+        this.router.navigate([`home/accounts`]);
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      });
+  }
+
+  tryLogin(value) {
+    this.userService.doLogin(value)
+      .then(res => {
+        console.log(res);
+        this.router.navigate([`home/accounts`]);
+      }, err => {
+        console.log(err);
+        this.errorMessage = err.message;
+      });
   }
 }

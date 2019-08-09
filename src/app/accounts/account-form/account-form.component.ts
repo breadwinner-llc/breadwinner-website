@@ -13,6 +13,7 @@ export class AccountFormComponent implements OnInit {
   accountId = null;
   isEdit = false;
   accountForm;
+  accountNames = ['BigCartel', 'eBay', 'Etsy', 'Facebook Marketplace', 'GOAT', 'Grailed', 'Poshmark', 'SHOPIFY', 'Stockx'];
   account  = {} as AccountInterface;
   show = true;
   platform;
