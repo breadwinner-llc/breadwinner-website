@@ -5,13 +5,11 @@
 
 .pad {
   padding: 20px;
-  width: 367px;
 }
 
 .buttons {
   font-size: 20px;
-  padding-left: 55px;
-  padding-right: 55px;
+  width: 48%;
   padding-top: 10px;
   padding-bottom:  10px;
 }
@@ -20,12 +18,8 @@
   font-weight: bolder;
 }
 
-.show {
-  margin-left: 270px;
-}
-
 .title {
-  margin-left: 70px !important;
+  margin-left: 22% !important;
   margin-bottom: 20px !important;
   font-weight: bolder;
 }
@@ -35,6 +29,7 @@ input.ng-invalid.ng-touched {
 }
 
 .desc {
+  margin-left: 4% !important;
   text-align: center;
   margin-bottom: 30px !important;
   font-weight: bold;
@@ -42,6 +37,7 @@ input.ng-invalid.ng-touched {
 }
 
 .terms {
+  margin-left: 10% !important;
   text-align: center;
   margin-top: 30px !important;
   font-weight: bold;

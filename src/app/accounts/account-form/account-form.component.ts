@@ -51,11 +51,13 @@ export class AccountFormComponent implements OnInit {
         this.account.name = this.platform;
         this.account.userName = this.accountForm.value.userName;
         this.account.password = this.accountForm.value.word;
+        this.location.back()
         console.log(this.account);
       } else {
         this.account.name = this.accountForm.value.name;
         this.account.userName = this.accountForm.value.userName;
         this.account.password = this.accountForm.value.word;
+        this.location.back();
         console.log(this.account);
       }
     }

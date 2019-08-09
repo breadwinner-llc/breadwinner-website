@@ -12,8 +12,9 @@
   </div>
   <div class="form-group">
     <input placeholder="Password" required [type]="show ? 'password':'text'" formControlName="word" class="form-control pad bold">
-    <div type="button" class="show" (click)="show = !show">show password</div>
+    <div type="button" class="pull-right" (click)="show = !show">show password</div>
   </div>
-  <button type="button" class="btn btn-primary cancel" (click)="onCancel()">Cancel</button>&nbsp;
-  <button type="submit" class="btn btn-primary save" [disabled]="!accountForm.valid" (click)="onSave()">Save</button>
+  <br>
+  <button type="button" class="btn btn-primary cancel" (click)="onCancel()">Cancel</button>
+  <button type="submit" class="btn btn-primary save pull-right" [disabled]="!accountForm.valid" (click)="onSave()">Save</button>
 </div>
