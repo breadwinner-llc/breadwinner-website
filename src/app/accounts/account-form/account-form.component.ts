@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AccountInterface} from '../../interfaces/account.interface';
+import {UserService} from '../../user.service';
 
 @Component({
   selector: 'app-account-form',
@@ -18,7 +19,7 @@ export class AccountFormComponent implements OnInit {
   show = true;
   platform;
   isLoaded = false;
-  constructor(private route: ActivatedRoute, private location: Location ) { }
+  constructor(private route: ActivatedRoute, private location: Location, private userService: UserService) { }
 
   ngOnInit() {
     this.route.params.subscribe( (data) => {
@@ -53,13 +54,12 @@ export class AccountFormComponent implements OnInit {
         this.account.userName = this.accountForm.value.userName;
         this.account.password = this.accountForm.value.word;
         this.location.back()
-        console.log(this.account);
       } else {
         this.account.name = this.accountForm.value.name;
         this.account.userName = this.accountForm.value.userName;
         this.account.password = this.accountForm.value.word;
         this.location.back();
-        console.log(this.account);
+        this.userService.createPlatform(this.account);
       }
     }
   }

@@ -20,8 +20,5 @@ export class HomeComponent implements OnInit {
   toPost() {
     this.router.navigate([`home/post`]);
   }
-  signOut() {
-    this.router.navigate( [``]);
-  }
 
 }

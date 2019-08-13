@@ -15,7 +15,7 @@ export class AccountsComponent implements OnInit {
 
   ngOnInit() {
     this.userId = this.userService.userId;
-    this.accountsArray = this.userService.userAccounts;
+    this.accountsArray = this.userService.userPlatforms;
   }
   onEdit(accountId: number) {
     this.router.navigate([`home/accounts/${accountId}/edit`]);

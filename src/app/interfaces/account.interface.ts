@@ -1,5 +1,5 @@
 export class AccountInterface {
-  id?: number;
+  id?: string;
   name?: string;
   userName?: string;
   password?: string;

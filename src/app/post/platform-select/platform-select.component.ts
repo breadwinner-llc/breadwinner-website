@@ -15,7 +15,7 @@ export class PlatformSelectComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.userService.post);
-    this.userAccounts = this.userService.userAccounts;
+    this.userAccounts = this.userService.userPlatforms;
   }
   select(account: AccountInterface) {
     account.selected = !account.selected;

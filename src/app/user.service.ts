@@ -8,8 +8,7 @@ import {AccountInterface} from './interfaces/account.interface';
 @Injectable()
 export class UserService {
   userId;
-  userAccounts: AccountInterface[] = [{id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero', amountEarned: 50.00, selected: true},
-    {id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero', amountEarned: 80.00, selected: false}];
+  userPlatforms: AccountInterface[] = [];
   post = {} as Post;
   constructor(public afAuth: AngularFireAuth) {
   }
@@ -30,7 +29,39 @@ export class UserService {
         .then(res => {
           resolve(res);
           this.userId = res.user.uid;
+          this.getPlatforms();
         }, err => reject(err));
     });
+  }
+  createPlatform(data: AccountInterface) {
+    firebase.firestore().collection('users').add({
+      password: data.password,
+      platform: data.name,
+      userId: this.userId,
+      usernameOrEmail: data.userName,
+      selected: false
+    })
+      .then((docRef) => {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch((error) => {
+        console.error('Error adding document: ', error);
+      })
+    this.getPlatforms();
+  }
+  getPlatforms() {
+    this.userPlatforms = [];
+    const usersRef = firebase.firestore().collection('users');
+    const query = usersRef.where('userId', '==', this.userId).get().then( snapshot => {
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        this.userPlatforms.push({id: doc.id, name: data.platform, userName: data.usernameOrEmail, password: data.password,
+          selected: data.selected, amountEarned: 0});
+        console.log(this.userPlatforms);
+      });
+    });
+  }
+  updatePlatform() {
+
   }
 }
