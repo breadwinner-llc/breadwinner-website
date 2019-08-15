@@ -6,6 +6,7 @@ import {PlatformSelectComponent} from './post/platform-select/platform-select.co
 import {AccountsComponent} from './accounts/accounts.component';
 import {LoginComponent} from './login/login.component';
 import {AccountFormComponent} from './accounts/account-form/account-form.component';
+import {CompletedComponent} from './post/completed/completed.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
           {
             path: 'platforms',
             component: PlatformSelectComponent
+          },
+          {
+            path: 'completed',
+            component: CompletedComponent
           }
         ]
       },

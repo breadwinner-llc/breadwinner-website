@@ -15,6 +15,7 @@ import {environment} from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CompletedComponent } from './post/completed/completed.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     PostComponent,
     PlatformSelectComponent,
     AccountsComponent,
-    AccountFormComponent
+    AccountFormComponent,
+    CompletedComponent
   ],
   imports: [
     BrowserModule,

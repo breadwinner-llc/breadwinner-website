@@ -6,7 +6,7 @@
   <div>
     <div class="row outline p-0" *ngFor="let account of accountsArray">
       <div class="col-md-3 spacer"><b>{{account.name}}</b></div>
-      <div class="col-md-3 spacer"><b>{{account.userName}}</b></div>
+      <div class="col-md-3 spacer"><b>{{shorten(account.userName)}}</b></div>
       <div class="col-md-3 rightMost"><b *ngFor="let char of account.password.split('')">•</b></div>
       <button class="btn btn-primary col-md-3 editButton" (click)="onEdit(account.id)">Edit</button>
     </div>

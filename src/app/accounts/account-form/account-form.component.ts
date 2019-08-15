@@ -28,7 +28,7 @@ export class AccountFormComponent implements OnInit {
     });
     if (this.accountId != null) {
       this.isEdit = true;
-      this.account = {id: 1, name: 'Ebay', userName: 'pdurgin', password: 'da174ero'};
+      this.account = this.userService.getPlatformById(this.accountId);
       this.platform = this.account.name;
     }
     this.initAccountForm();
@@ -50,16 +50,16 @@ export class AccountFormComponent implements OnInit {
   onSave() {
     if (this.accountForm.valid) {
       if (this.isEdit) {
-        this.account.name = this.platform;
         this.account.userName = this.accountForm.value.userName;
         this.account.password = this.accountForm.value.word;
-        this.location.back()
+        this.userService.updatePlatform(this.account);
+        this.location.back();
       } else {
         this.account.name = this.accountForm.value.name;
         this.account.userName = this.accountForm.value.userName;
         this.account.password = this.accountForm.value.word;
-        this.location.back();
         this.userService.createPlatform(this.account);
+        this.location.back();
       }
     }
   }

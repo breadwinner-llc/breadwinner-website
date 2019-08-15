@@ -17,18 +17,19 @@ export class AccountsComponent implements OnInit {
     this.userId = this.userService.userId;
     this.accountsArray = this.userService.userPlatforms;
   }
-  onEdit(accountId: number) {
+  onEdit(accountId: string) {
     this.router.navigate([`home/accounts/${accountId}/edit`]);
   }
   addAccount() {
     this.router.navigate([`home/accounts/add`]);
   }
-  createBlank(input: string) {
-    const blank = '';
-    for (const char of input) {
-      blank.concat('*');
+  shorten(input: string): string {
+    if (input.length > 13) {
+      return input.slice(0 , 13).concat('...');
+    } else {
+      return input;
     }
-    return blank;
   }
-
 }
+
+

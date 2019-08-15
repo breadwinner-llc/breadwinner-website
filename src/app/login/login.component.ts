@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     this.userService.doLogin(value)
       .then(res => {
         console.log(res);
-        this.router.navigate([`home/accounts`]);
+        this.router.navigate([`home/post`]);
       }, err => {
         console.log(err);
         this.errorMessage = err.message;

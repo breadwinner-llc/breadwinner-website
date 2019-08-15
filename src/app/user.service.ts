@@ -61,7 +61,16 @@ export class UserService {
       });
     });
   }
-  updatePlatform() {
-
+  getPlatformById(id: string): AccountInterface {
+    for (const platform of this.userPlatforms) {
+      if (platform.id === id) {
+        return platform;
+      }
+    }
+  }
+  updatePlatform(data: AccountInterface) {
+    const account = {password: data.password, usernameOrEmail: data.userName, selected: data.selected};
+    firebase.firestore().collection('users').doc(data.id).update(account);
+    this.getPlatforms();
   }
 }

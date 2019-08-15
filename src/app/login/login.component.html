@@ -9,7 +9,7 @@
     <div type="button" class="pull-right" (click)="show = !show">show password</div>
   </div>
   <br>
-  <button type="button" class="btn btn-primary buttons" [disabled]="!loginForm.valid" (click)="signIn()">Sign In</button>
+  <button type="submit" class="btn btn-primary buttons" [disabled]="!loginForm.valid" (click)="signIn()">Sign In</button>
   <button type="submit" class="btn btn-primary pull-right buttons" [disabled]="!loginForm.valid" (click)="signUp()">Sign Up</button>
   <label class="error">{{errorMessage}}</label>
   <p class="terms col-md-10" >By signing up or logging in, you agree to our Terms & Conditions, and Privacy Policy</p>

@@ -15,10 +15,12 @@ export class PlatformSelectComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.userService.post);
+    this.userService.getPlatforms();
     this.userAccounts = this.userService.userPlatforms;
   }
   select(account: AccountInterface) {
     account.selected = !account.selected;
+    this.userService.updatePlatform(account);
   }
   platformsSelected() {
     this.selected = false;
@@ -34,7 +36,7 @@ export class PlatformSelectComponent implements OnInit {
     if (this.selected) {
       console.log(this.userService.post);
       this.userService.post = {};
-      this.router.navigate([`home/post`]);
+      this.router.navigate([`home/post/completed`]);
     }
   }
 
