@@ -10,6 +10,8 @@
   margin-left: -14px;
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: darkmagenta;
+  color: lightgray;
 }
 .gap {
   margin-bottom: 20px;
@@ -88,7 +90,7 @@
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: magenta;
 }
 
 input:focus + .slider {

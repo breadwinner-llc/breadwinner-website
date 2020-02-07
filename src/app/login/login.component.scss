@@ -12,6 +12,8 @@
   width: 48%;
   padding-top: 10px;
   padding-bottom:  10px;
+  background-color: darkmagenta;
+  color: lightgray;
 }
 .error {
   color: red;
@@ -22,13 +24,15 @@
 }
 
 .title {
-  margin-left: 22% !important;
-  margin-bottom: 20px !important;
-  font-weight: bolder;
+  margin-left: 8px !important;
 }
 
 input.ng-invalid.ng-touched {
   border: 1px solid red;
+}
+
+input.active {
+  border: 1px solid darkmagenta;
 }
 
 .desc {
@@ -36,7 +40,7 @@ input.ng-invalid.ng-touched {
   text-align: center;
   margin-bottom: 30px !important;
   font-weight: bold;
-  font-size: small;
+  font-size: medium;
 }
 
 .terms {

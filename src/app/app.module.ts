@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { CompletedComponent } from './post/completed/completed.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,12 @@ import { CompletedComponent } from './post/completed/completed.component';
     PlatformSelectComponent,
     AccountsComponent,
     AccountFormComponent,
-    CompletedComponent
+    CompletedComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

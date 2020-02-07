@@ -34,6 +34,7 @@ export class PlatformSelectComponent implements OnInit {
   post() {
     this.platformsSelected();
     if (this.selected) {
+      this.userService.postItem();
       console.log(this.userService.post);
       this.userService.post = {};
       this.router.navigate([`home/post/completed`]);

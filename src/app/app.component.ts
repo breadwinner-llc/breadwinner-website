@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {UserService} from './user.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import {UserService} from './user.service';
 })
 export class AppComponent {
 
-  constructor() {}
+  constructor(private titleService: Title) { this.setTitle(); }
+
+  public setTitle() {
+    this.titleService.setTitle( 'copyt' );
+  }
 }
